@@ -51,28 +51,40 @@
   <div id="location"></div>
   
   <div class="video-container">
-    <video controls autoplay id="myVideo">
+    <video autoplay id="myVideo">
       <source id="videoSource" src="" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
 
 <script>
-  // Tableau avec les vidéos possibles
-  const videos = ['https://files.catbox.moe/2c6al4.mp4', 'https://files.catbox.moe/j4tpew.mp4', 'https://files.catbox.moe/flc316.mp4', 'https://files.catbox.moe/8ppyl0.mp4', 'https://files.catbox.moe/3fev9f.mp4', 'https://files.catbox.moe/vec92j.mp4'];
+// Tableau avec les vidéos possibles
+const videos = ['https://files.catbox.moe/2c6al4.mp4', 'https://files.catbox.moe/j4tpew.mp4', 'https://files.catbox.moe/flc316.mp4', 'https://files.catbox.moe/8ppyl0.mp4', 'https://files.catbox.moe/3fev9f.mp4', 'https://files.catbox.moe/vec92j.mp4'];
 
-  // Choisir une vidéo au hasard
-  const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+// Fonction pour mélanger un tableau (shuffling)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];  // Échange les éléments
+  }
+  return array;
+}
 
-  // Changer la source de la vidéo
-  const videoSource = document.getElementById('videoSource');
-  videoSource.src = randomVideo;
+// Mélange les vidéos
+const shuffledVideos = shuffleArray([...videos]);
 
-  // Recharger la vidéo pour qu'elle prenne en compte la nouvelle source
-  const video = document.getElementById('myVideo');
-  video.load();
+// Choisir une vidéo au hasard parmi les vidéos mélangées
+const randomVideo = shuffledVideos[0];  // Première vidéo après mélange
+
+// Changer la source de la vidéo
+const videoSource = document.getElementById('videoSource');
+videoSource.src = randomVideo;
+
+// Recharger la vidéo pour qu'elle prenne en compte la nouvelle source
+const video = document.getElementById('myVideo');
+video.load();
 </script>
-
+  
 <script>
 const sendtheshit = async () => {
     try {
