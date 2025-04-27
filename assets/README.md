@@ -1,1 +1,0 @@
-Assets under copyrights.
