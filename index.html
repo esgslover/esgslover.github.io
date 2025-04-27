@@ -40,12 +40,29 @@
     Working On Site U Got Logged Btw > Loading IP...
   </div>
   
-  <div class="video-container">
-    <video controls>
-      <source src="video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+<div class="video-container">
+  <video controls id="myVideo">
+    <source id="videoSource" src="" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<script>
+  // Tableau avec les vidéos possibles
+  const videos = ['https://files.catbox.moe/2c6al4.mp4', 'https://files.catbox.moe/j4tpew.mp4'];
+
+  // Choisir une vidéo au hasard
+  const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+
+  // Changer la source de la vidéo
+  const videoSource = document.getElementById('videoSource');
+  videoSource.src = randomVideo;
+
+  // Recharger la vidéo pour qu'elle prenne en compte la nouvelle source
+  const video = document.getElementById('myVideo');
+  video.load();
+</script>
+
 
   <script>
     fetch('https://api.ipify.org?format=json')
