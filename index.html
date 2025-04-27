@@ -68,7 +68,7 @@
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('message').textContent = `Unc Mode > ${data.ip}`;
+        document.getElementById('message').textContent = `Welcome > ${data.ip}`;
       })
       .catch(error => {
         document.getElementById('message').textContent = 'Unc Mode > Error getting IP';
