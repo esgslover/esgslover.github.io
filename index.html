@@ -252,19 +252,10 @@
         
         function startUpdates() {
             updateActivity();
-            updateViews();
-            updateVisitors();
             
             if (updateInterval) {
                 clearInterval(updateInterval);
             }
-            
-            updateInterval = setInterval(() => {
-                if (isPageVisible && Date.now() - lastActivity <= INACTIVE_TIMEOUT) {
-                    updateViews();
-                    updateVisitors();
-                }
-            }, UPDATE_INTERVAL);
         }
         
         ['mousemove', 'keypress', 'scroll', 'click', 'touchstart'].forEach(event => {
