@@ -165,9 +165,6 @@
                 video.muted = false;
                 video.volume = volumeSlider.value / 100;
                 updateVolumeIcon(volumeSlider.value);
-                if (!audioContext) {
-                    initAudio();
-                }
             } catch (err) {
                 console.error('Erreur lors de l\'activation du son:', err);
             }
