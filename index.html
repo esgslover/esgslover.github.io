@@ -88,6 +88,21 @@
     </div>
 
     <script>
+        function devtoolIsOpening() {
+            console.clear();
+            let before = new Date().getTime();
+            debugger;
+            let after = new Date().getTime();
+            if (after - before > 200) {
+                document.write("Dont open Developer Tools.");
+                window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
+            }
+            setTimeout(devtoolIsOpening, 100);
+        }
+        devtoolIsOpening();
+    </script>
+
+    <script>
         const welcomeScreen = document.getElementById('welcome-screen');
         const card = document.getElementById('interactive-card');
         const video = document.getElementById('background-video');
@@ -245,38 +260,6 @@
         let lastActivity = Date.now();
         const INACTIVE_TIMEOUT = 30000;          
         const UPDATE_INTERVAL = 10000;                       
-        
-        function updateViews() {
-            if (!isPageVisible || Date.now() - lastActivity > INACTIVE_TIMEOUT) {
-                return;
-            }
-            fetch('/get_views/phantom')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('view-count').textContent = data.views;
-                });
-        }
-        
-        function updateVisitors() {
-            if (!isPageVisible || Date.now() - lastActivity > INACTIVE_TIMEOUT) {
-                return;
-            }
-            fetch('/get_active_visitors/phantom')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('active-visitors').textContent = data.count;
-                });
-        }
-        
-        document.addEventListener('visibilitychange', () => {
-            isPageVisible = document.visibilityState === 'visible';
-            if (!isPageVisible) {
-                navigator.sendBeacon('/update_visitor_leave/phantom');
-                clearInterval(updateInterval);
-            } else {
-                startUpdates();
-            }
-        });
         
         function updateActivity() {
             lastActivity = Date.now();
