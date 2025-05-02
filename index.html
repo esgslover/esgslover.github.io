@@ -88,21 +88,6 @@
     </div>
 
     <script>
-        function devtoolIsOpening() {
-            console.clear();
-            let before = new Date().getTime();
-            debugger;
-            let after = new Date().getTime();
-            if (after - before > 200) {
-                document.write("Dont open Developer Tools.");
-                window.location.replace("https://www.youtube.com/watch?v=xvFZjo5PgG0");
-            }
-            setTimeout(devtoolIsOpening, 100);
-        }
-        devtoolIsOpening();
-    </script>
-
-    <script>
         const welcomeScreen = document.getElementById('welcome-screen');
         const card = document.getElementById('interactive-card');
         const video = document.getElementById('background-video');
